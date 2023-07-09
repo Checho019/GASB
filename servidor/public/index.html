@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <title>Generador de API</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Formulario de informacion general-->
+      <div class="text-center border-bottom border-black p-3">
+        <form action="" id="form-info" class="">
+          <h2 class="m-4">Informacion general del proyecto</h2>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label for="proyect-name" class="form-label"
+                >Nombre del proyecto</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="proyect-name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="col-6 mb-3">
+              <label for="proyect-name" class="form-label"
+                >Descripcion del proyecto</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="proyect-desc"
+                name="desc"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label for="proyect-name" class="form-label">Version</label>
+              <input
+                type="text"
+                class="form-control"
+                id="proyect-ver"
+                name="ver"
+                required
+              />
+            </div>
+            <div class="col-6 mb-3">
+              <label for="proyect-name" class="form-label">Licencia</label>
+              <input
+                type="text"
+                class="form-control"
+                id="proyect-lic"
+                name="lic"
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark">Enviar</button>
+        </form>
+      </div>
+      <!-- Formulario de base de datos -->
+      <div class="text-center border-bottom border-black p-3">
+        <form action="" id="form-db" class="d-none">
+          <h2>Informacion de base de datos</h2>
+          <div class="row">
+            <div class="col-3 mb-3">
+              <label for="db-name" class="form-label">Base de datos</label>
+              <input
+                type="text"
+                class="form-control"
+                id="db"
+                name="name"
+                required
+              />
+            </div>
+            <div class="col-3 mb-3">
+              <label for="db-smbd" class="form-label">SMBD</label>
+              <select class="form-select" id="smbd" name="smbd">
+                <option value="postgresql">PostgreSQL</option>
+                <option value="mariadb">MariaDB</option>
+                <option value="mysql">MySQL</option>
+              </select>
+            </div>
+            <div class="col-3 mb-3">
+              <label for="db-host" class="form-label">Host</label>
+              <input
+                type="text"
+                class="form-control"
+                id="db-host"
+                name="host"
+                required
+              />
+            </div>
+            <div class="col-3 mb-3">
+              <label for="db-port" class="form-label">Puerto</label>
+              <input
+                type="number"
+                class="form-control"
+                id="db-port"
+                name="port"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-4 mb-3">
+              <label for="db-user" class="form-label">Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                id="db-user"
+                name="user"
+                required
+              />
+            </div>
+            <div class="col-4 mb-3">
+              <label for="db-pass" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="db-pass"
+                name="pass"
+                required
+              />
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <button type="submit" class="btn btn-dark">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <!-- Formulario de clases -->
+    <div class="row text-center m-3">
+      <div class="col-8 border-end border-black">
+        <div class="row">
+          <div class="col-4">
+            <!-- Formulario para enviar clase -->
+            <form action="" id="form-class" class="d-none">
+                <h3>Agregar clase</h3>
+              <label for="clase-name" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="claseName"
+                name="claseName"
+                required
+              />
+              <button type="submit" class="btn btn-dark m-3">
+                Agregar clase
+              </button>
+            </form>
+          </div>
+          <div class="col-8">
+            <!-- Formulario para atributos -->
+            <form id="form-att" class="d-none">
+              <div class="row">
+                <div class="col-4">
+                  <label for="clase-att-name" class="form-label"
+                    >Atributo</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="clase-att-name"
+                    name="nombre"
+                  />
+                </div>
+                <div class="col-4">
+                  <label for="db-smbd" class="form-label">Tipo de dato</label>
+                  <select class="form-select" id="db-smbd" name="tipo">
+                    <option value="String">String</option>
+                    <option value="int">int</option>
+                    <option value="long">long</option>
+                    <option value="double">double</option>
+                    <option value="float">float</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <button id="att" type="button" class="btn btn-dark">
+                    Agregar Atributo
+                  </button>
+                </div>
+              </div>
+              <div id="atributos"></div>
+              <button id="submit" type="submit" class="btn btn-dark my-3">
+                Finalizar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <h3>Clases</h3>
+        <div id="clases"></div>
+      </div>
+    </div>
+
+    <script>
+        // Variables
+      let atributos = [];
+      let clases = [];
+      let numClases = 0
+
+        // Estructuras
+      let appInfo = {
+        nombre: "",
+        descripcion: "",
+        licencia: "",
+        version: "",
+      };
+
+      let database = {
+        nombre: "",
+        baseDeDatos: "",
+        usuario: "",
+        pass: "",
+        puerto: 0,
+        host: "",
+      };
+
+      let modeloDeDatos = {
+        clases: []
+      };
+
+      // Formularios
+      const infoForm = document.getElementById("form-info");
+      const dbForm = document.getElementById("form-db");
+      const classForm = document.getElementById("form-class");
+      const attForm = document.getElementById("form-att");
+
+      const attBtn = document.getElementById("att")
+      const divAtt = document.getElementById("atributos")
+      const divClases = document.getElementById("clases")
+      divAtt.innerHTML = ""
+      divClases.innerHTML = ""
+
+      // Logica
+      infoForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        appInfo.nombre = infoForm.name.value
+        appInfo.descripcion = infoForm.desc.value
+        appInfo.version = infoForm.ver.value
+        appInfo.licencia = infoForm.lic.value
+
+        infoForm.classList.toggle("d-none")
+        dbForm.classList.toggle("d-none")
+      })
+
+      dbForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        database.nombre = dbForm.name.value
+        database.baseDeDatos = dbForm.smbd.value
+        database.host = dbForm.host.value
+        database.puerto = dbForm.port.value
+        database.usuario = dbForm.user.value
+        database.pass = dbForm.pass.value
+
+        dbForm.classList.toggle("d-none")
+        classForm.classList.toggle("d-none")
+      })
+
+      classForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let c = {
+            nombreClase: (classForm.claseName.value.charAt(0).toUpperCase() + classForm.claseName.value.slice(1)).split(' ')[0],
+            ncl: classForm.claseName.value.split(' ')[0].toLowerCase(),
+            atributos: []
+        }
+        clases.push(c)
+        numClases++
+        classForm.claseName.value = ""
+
+        classForm.classList.toggle('d-none')
+        attForm.classList.toggle('d-none')
+      })
+
+      attBtn.addEventListener('click', (e) => {
+        let att = {
+          nombre: attForm.nombre.value,
+          tipo: attForm.tipo.value
+        }
+        clases[numClases - 1].atributos.push(att)
+        attForm.nombre.value = ""
+        divAtt.innerHTML += `<p>${att.nombre} : ${att.tipo}</p>`
+      })
+
+      attForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        divAtt.innerHTML = ""
+        classForm.classList.toggle('d-none')
+        attForm.classList.toggle('d-none')
+
+        let text = ""
+        clases[numClases - 1].atributos.forEach(att => {
+            text += `<p>${att.nombre} : ${att.tipo}</p>`
+        });
+
+        divClases.innerHTML += `
+        <div class="card mb-2" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>${clases[numClases - 1].nombreClase}</b></li>
+                <li class="list-group-item">${text}</li>
+            </ul>
+        </div>`
+      })
+
+    </script>
+  </body>
+</html>
+
+<!--
+<div class="col-6 mb-3">
+    
+</div>
+-->
